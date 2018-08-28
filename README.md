@@ -158,5 +158,7 @@ docker run \
 ### References:
 
 https://docs.confluent.io/3.2.0/cp-docker-images/docs/tutorials/connect-avro-jdbc.html
+
 https://github.com/confluentinc/cp-docker-images/issues/346
+
 https://github.com/confluentinc/kafka-connect-jdbc/issues/344
