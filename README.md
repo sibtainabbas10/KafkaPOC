@@ -155,7 +155,7 @@ docker run \
  kafka-avro-console-consumer --bootstrap-server localhost:29092 --topic quickstart-jdbc-kafka_test --from-beginning --max-messages 10
 ```
 
-###References:
+### References:
 
 https://docs.confluent.io/3.2.0/cp-docker-images/docs/tutorials/connect-avro-jdbc.html
 https://github.com/confluentinc/cp-docker-images/issues/346
