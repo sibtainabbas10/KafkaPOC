@@ -74,7 +74,6 @@ Link: https://www.microsoft.com/en-us/download/details.aspx?id=57175
 7. Start a connect worker with Avro support.
 
 ```
-[https://github.com/confluentinc/cp-docker-images/issues/346, https://github.com/confluentinc/kafka-connect-jdbc/issues/344]
 docker run -d \
   --name=kafka-connect-avro \
   --net=host \
@@ -155,3 +154,9 @@ docker run \
  confluentinc/cp-schema-registry:latest \
  kafka-avro-console-consumer --bootstrap-server localhost:29092 --topic quickstart-jdbc-kafka_test --from-beginning --max-messages 10
 ```
+
+###References:
+
+https://docs.confluent.io/3.2.0/cp-docker-images/docs/tutorials/connect-avro-jdbc.html
+https://github.com/confluentinc/cp-docker-images/issues/346
+https://github.com/confluentinc/kafka-connect-jdbc/issues/344
