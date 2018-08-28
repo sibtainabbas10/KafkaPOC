@@ -116,15 +116,13 @@ docker logs kafka-connect-avro | grep started
 
 10. Open MS SQL Server and create a database named `kafka-ms-sql` and a table named `kafka_test`
 
-11. Create our JDBC Source connector using the Connect REST API. (You’ll need to have curl installed)
-
-12. Set the CONNECT_HOST. 
+11. Set the CONNECT_HOST. 
 
 ```
 export CONNECT_HOST=localhost
 ```
 
-13. Create the JDBC Source connector.
+12. Create the JDBC Source connector.
 
 ```
 curl -X POST \
@@ -132,16 +130,16 @@ curl -X POST \
   --data '{ "name": "quickstart-jdbc-source", "config": { "connector.class": "io.confluent.connect.jdbc.JdbcSourceConnector", "tasks.max": 1, "connection.url": "jdbc:sqlserver://kafka-ms-sql-server.database.windows.net:1433;database=kafka-ms-sql;user=kafka@kafka-ms-sql-server;password=Pakistan@123;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30", "mode": "incrementing", "incrementing.column.name": "id", "timestamp.column.name": "modified", "topic.prefix": "quickstart-jdbc-", "poll.interval.ms": 1000 } }' http://$CONNECT_HOST:28083/connectors
 ```
 
-14. Output of above command should be like this.
+13. Output of above command should be like this.
 ```
 {"name":"quickstart-jdbc-source","config":{"connector.class":"io.confluent.connect.jdbc.JdbcSourceConnector","tasks.max":"1","connection.url":"jdbc:sqlserver://kafka-ms-sql-server.database.windows.net:1433;database=kafka-ms-sql;user=kafka@kafka-ms-sql-server;password=Pakistan@123;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30","mode":"incrementing","incrementing.column.name":"id","timestamp.column.name":"modified","topic.prefix":"quickstart-jdbc-","poll.interval.ms":"1000","name":"quickstart-jdbc-source"},"tasks":[],"type":null}
 ```
 
-15. Check the status of the connector using curl as follows:
+14. Check the status of the connector using curl as follows:
 ```
 curl -s -X GET http://$CONNECT_HOST:28083/connectors/quickstart-jdbc-source/status
 ```
-16. The JDBC sink create intermediate topics for storing data. We should see a quickstart-jdbc-kafka_test topic.
+15. The JDBC sink create intermediate topics for storing data. We should see a `quickstart-jdbc-kafka_test` topic.
 ```
 docker run \
    --net=host \
@@ -149,7 +147,7 @@ docker run \
    confluentinc/cp-kafka:3.2.0 \
    kafka-topics --describe --zookeeper localhost:32181
 ```
-17. Now we will read from the quickstart-jdbc-kafka_test topic to check if the connector works.
+16. Now we will read from the `quickstart-jdbc-kafka_test topic` to check if the connector works.
 ```
 docker run \
  --net=host \
